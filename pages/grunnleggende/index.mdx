@@ -1,5 +1,5 @@
 import Meta from '../../components/Meta/Meta'
-import SubjectsNav from "../../layouts/SubjectsNav/SubjectsNav";
+import {PageLandingLayout} from "../../layouts/PageLandingLayout/PageLandingLayout";
 
 <Meta title='Grunnleggende' />
 
@@ -16,4 +16,4 @@ export const data = {
     ]
 };
 
-export default ({ children }) => <SubjectsNav Content={children} data={data} />;
+export default ({ children }) => <PageLandingLayout Content={children} data={data} />;

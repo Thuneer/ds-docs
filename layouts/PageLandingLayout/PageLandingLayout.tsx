@@ -1,18 +1,23 @@
 import Header from '../../components/Header/Header';
 import React from "react";
-import Section from "../../components/Section/Section";
 import {Container, Row, Col} from "react-bootstrap";
 import NavigationCard from "../../components/NavigationCard/NavigationCard";
 import {Picture, Wrench, System} from "@navikt/ds-icons";
 
-import classes from './SubjectsNav.module.css'
+import classes from './PageLandingLayout.module.css'
 
-interface SubjectsNavProps {
+interface PageLandingLayoutProps {
     Content: React.ReactNode;
     data: any;
 }
 
-const SubjectsNav = ({ Content, data }: SubjectsNavProps) => {
+interface PageLandingLayoutData {
+    title: string;
+    description: string;
+    items: any[];
+}
+
+const PageLandingLayout = ({ Content, data }: PageLandingLayoutProps) => {
     return (
         <div>
             <Header />
@@ -56,4 +61,6 @@ const SubjectsNav = ({ Content, data }: SubjectsNavProps) => {
     );
 };
 
-export default SubjectsNav;
+export {PageLandingLayout};
+export type { PageLandingLayoutData };
+

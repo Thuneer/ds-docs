@@ -10,6 +10,15 @@ interface  FrontpageLayoutProps {
     data: any;
 }
 
+interface FrontpageData {
+    title: string;
+    description: string;
+    navigationCards: {
+        title: string;
+        items: any[]
+    };
+}
+
 const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
     return (
         <div>
@@ -31,4 +40,6 @@ const FrontpageLayout = ({ Content, data }: FrontpageLayoutProps) => {
     );
 };
 
-export default FrontpageLayout;
+export {FrontpageLayout};
+export type { FrontpageData };
+

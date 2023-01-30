@@ -12,6 +12,12 @@ interface SubjectsLayoutProps {
     data: any;
 }
 
+interface SubjectsLayoutData {
+    title: string;
+    description: string;
+    items: any[];
+}
+
 const SubjectsLayout = ({ Content, data }: SubjectsLayoutProps) => {
     return (
         <div>
@@ -50,4 +56,5 @@ const SubjectsLayout = ({ Content, data }: SubjectsLayoutProps) => {
     );
 };
 
-export default SubjectsLayout;
+export {SubjectsLayout};
+export type { SubjectsLayoutData };

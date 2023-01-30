@@ -21,9 +21,5 @@ export default {
     return config;
   },
   reactStrictMode: true,
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts'],
-  images: {
-    loader: 'imgix',
-    path: 'https://images.unsplash.com/',
-  },
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'tsx', 'ts']
 };

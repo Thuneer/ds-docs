@@ -5,6 +5,7 @@ import {useRouter} from "next/router";
 import { Hamburger, Close } from "@navikt/ds-icons";
 import {useState} from "react";
 import cn from 'classnames'
+import Image from 'next/image'
 
 const Header = () => {
     const router = useRouter();
@@ -15,7 +16,7 @@ const Header = () => {
             <Container className={classes.container}>
                 <div className={classes.left}>
                     <Link href="/">
-                        <img className={classes.logo} src="/logo.svg" alt="Logo"/>
+                        <Image className={classes.logo} src="/logo.svg" alt="Logo"/>
                     </Link>
                 </div>
                 <div className={classes.right}>
