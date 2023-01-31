@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import 'normalize.css/normalize.css'
 import 'bootstrap/dist/css/bootstrap-grid.css'
+import 'react-tooltip/dist/react-tooltip.css'
 import '@altinn/figma-design-tokens/dist/tokens.css'
 import '../globals.css';
 import { Inter } from '@next/font/google'

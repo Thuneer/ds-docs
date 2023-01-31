@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Copy } from 'lucide-react';
 import classes from './CodeSnippet.module.css';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { Tooltip } from 'react-tippy';
+import { Tooltip } from 'react-tooltip'
 // Formatting
 import prettier from 'prettier/standalone.js';
 import parserJs from 'prettier/parser-flow.js';
@@ -56,32 +56,18 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
   const onButtonClick = () => {
     setToolTipText('Kopiert!');
     navigator.clipboard.writeText(children);
-    setTimeout(() => {
-      setShowToolTip(false);
-    }, 300);
-    setTimeout(() => {
-      setToolTipText('Kopier');
-    }, 500);
   };
 
   return (
     <div className={classes['code-snippet']}>
+        <Tooltip anchorId="tomato" content={toolTipText} place="top" />
       <button
+          id='tomato'
         onClick={() => onButtonClick()}
-        onMouseEnter={() => setShowToolTip(true)}
-        onMouseLeave={() => setShowToolTip(false)}
+        onMouseEnter={() => setToolTipText('Kopier')}
         className={classes['code-snippet__icon']}
       >
-        <Tooltip
-          open={showToolTip}
-          title={toolTipText}
-          position='top'
-          trigger='mouseenter'
-          arrow={true}
-          distance={22}
-          hideOnClick={false}
-        />
-
+          <Copy size={20} />
       </button>
       <SyntaxHighlighter
           style={nightOwl}

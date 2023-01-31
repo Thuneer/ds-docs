@@ -9,6 +9,7 @@ interface ComponentConfiguratorProps {
 }
 
 const ComponentConfigurator = ({component}: ComponentConfiguratorProps) => {
+    const [controls, setControls] = useState({});
     const config = [
         {
             type: 'radio',
@@ -55,7 +56,6 @@ const ComponentConfigurator = ({component}: ComponentConfiguratorProps) => {
             ]
         }
     ]
-    const [controls, setControls] = useState({});
 
     useEffect(() => {
         for (let i = 0; i < config.length; i++) {
