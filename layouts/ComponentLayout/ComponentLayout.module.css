@@ -23,9 +23,13 @@
 .markdown h2 {
     font-size: 28px !important;
     font-weight: 500;
+    margin-top: 48px;
+    margin-bottom: 16px;
 }
 
 .markdown h3 {
     font-size: 24px !important;
     font-weight: 500;
+    margin-top: 48px;
+    margin-bottom: 16px;
 }

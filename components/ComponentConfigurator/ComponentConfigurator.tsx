@@ -1,51 +1,96 @@
-import React from "react";
-import {Button, RadioGroup, RadioGroupSize, Select} from "@digdir/design-system-react";
+import React, {useEffect, useState} from "react";
+import {Button, RadioGroup, RadioGroupSize, Select, ButtonProps, ButtonVariant} from "@digdir/design-system-react";
 import {CodeSnippet} from "../CodeSnippet/CodeSnippet";
 import classes from './ComponentConfigurator.module.css'
+import { renderToString } from 'react-dom/server'
 
-const ComponentConfigurator = () => {
+interface ComponentConfiguratorProps {
+    component: any;
+}
+
+const ComponentConfigurator = ({component}: ComponentConfiguratorProps) => {
+    const config = [
+        {
+            type: 'radio',
+            label: 'Color',
+            prop: 'color',
+            defaultValue: 'primary',
+            items: [
+                {
+                    label: 'Primary',
+                    value: 'primary'
+                },
+                {
+                    label: 'Secondary',
+                    value: 'secondary'
+                },
+                {
+                    label: 'Success',
+                    value: 'success'
+                },
+                {
+                    label: 'Danger',
+                    value: 'danger'
+                }
+            ]
+        },
+        {
+            type: 'radio',
+            label: 'Size',
+            prop: 'size',
+            defaultValue: 'medium',
+            items: [
+                {
+                    label: 'Small',
+                    value: 'small'
+                },
+                {
+                    label: 'Medium',
+                    value: 'medium'
+                },
+                {
+                    label: 'Large',
+                    value: 'large'
+                }
+            ]
+        }
+    ]
+    const [controls, setControls] = useState({});
+
+    useEffect(() => {
+        for (let i = 0; i < config.length; i++) {
+            setControls({[config[i].prop]: config[i].defaultValue})
+        }
+    }, [])
+
+    const onRadioChanged = (prop: any, value: any) => {
+       setControls({...controls, [prop]: value})
+    }
+
     return (
         <div className={classes.component}>
             <div className={classes.container}>
                 <div className={classes.preview}>
-                    <Button>Primary button</Button>
+                    {React.cloneElement(component, controls)}
                 </div>
                 <div className={classes.controls}>
-                    <div className={classes.item}>
-                        <RadioGroup items={
-                            [
-                                { label: 'xSmall', value: 'spiser-ikke-is' },
-                                { label: 'Small', value: 'spiser-ikke-is2' },
-                            ]
-                        } name='test' size={RadioGroupSize.Xsmall} legend='Size' />
-                    </div>
-                    <div className={classes.item}>
-                    <RadioGroup items={
-                        [
-                            { label: 'Jeg spiser ikke iskrem', value: 'spiser-ikke-is' },
-                            { label: 'Jeg spiser ikke iskrem2', value: 'spiser-ikke-is2' },
-                            { label: 'Jeg spiser ikke iskrem2', value: 'spiser-ikke-is3' },
-                        ]
-                    } name='test' size={RadioGroupSize.Xsmall} legend='Size' value='spiser-ikke-is' />
-                    </div>
-                        <div className={classes.item}>
-                    <Select label='Size' options={
-                        [
-                        {label: 'ff', value: 'fff'},
-                        {label: 'ff', value: 'ffff'},
-                        ]} />
+                    {config.map((item, index) => (
+                        <div key={index} className={classes.item}>
+                            <RadioGroup
+                                onChange={(value) => {onRadioChanged(item.prop, value)}}
+                                name='test'
+                                size={RadioGroupSize.Xsmall}
+                                legend={item.label}
+                                value={item.defaultValue}
+                                items={item.items} />
                         </div>
+                    ))}
                 </div>
             </div>
 
-
-
-
             <div>
                 {/* eslint-disable-next-line react/no-children-prop */}
-                <CodeSnippet children='
-<SecondaryButton loader={false} onClick={simulateLoading} className="jkl-spacing-l--right">Lagre</SecondaryButton>
-    ' language='javascript'></CodeSnippet>
+                <CodeSnippet children={renderToString(React.cloneElement(component, controls))} language='javascript'></CodeSnippet>
             </div>
         </div>
     )

@@ -1,6 +1,10 @@
 import Meta from '../../components/Meta/Meta'
 import {ComponentLayout} from "../../layouts/ComponentLayout/ComponentLayout";
-import {ComponentConfigurator} from "../../components/ComponentConfigurator/ComponentConfigurator";
+import {ComponentConfigurator, TestComponent} from "../../components/ComponentConfigurator/ComponentConfigurator"; import {
+    TokensTable
+} from "../../components/Table/TokenTable/TokensTable";
+import {PropsTable} from "../../components/PropsTable/PropsTable";
+import {Button} from "@digdir/design-system-react";
 
 <Meta title='komponenter/button' />
 
@@ -9,7 +13,7 @@ export const data = {
     description: 'Felles designsystem består av grunnleggende designelementer og komponenter du kan bruke når du utvikler tjenester. Etter hvert håper vi at dette kan bli en felles verktøykasse.',
 };
 
-<ComponentConfigurator />
+<ComponentConfigurator component={<Button>Button</Button>} />
 
 ## Varianter
 
@@ -25,7 +29,9 @@ On through of which no the your phase more know anyone tried he when line me wha
 ## Bruk
 
 ## Props
+<PropsTable />
 
 ## Tokens
+<TokensTable jsonKey='component.button' componentName='button' description='d' />
 
 export default ({ children }) => <ComponentLayout Content={children} data={data}  />;

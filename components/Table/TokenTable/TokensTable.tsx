@@ -41,15 +41,12 @@ const TokensTable = (tokenTable: TokenTableProps) => {
   const getRows = () => {
     const row = flattenObject(
       getJsonByKey(tokenTable.jsonKey, tokens),
-      '$' + tokenTable.componentName + '-',
+      '--' + tokenTable.componentName + '-',
     );
 
     const rows: { row: unknown[] }[] = [];
 
-    console.log(row);
-
     Object.entries(row).map(([key, value]) => {
-      console.log(value, key);
       if (tokenTable.showPreview) {
         rows.push({
           // @ts-ignore
@@ -93,7 +90,7 @@ const TokensTable = (tokenTable: TokenTableProps) => {
     <>
       {tokenTable.description && (
         <p>
-          Komponenten har følgende CSS-variabler tilgjengelige som kan
+          Komponenten har følgende CSS-variabler tilgjengelig som kan
           overstyres ved behov:
         </p>
       )}
