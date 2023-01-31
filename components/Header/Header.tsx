@@ -15,7 +15,7 @@ const Header = () => {
             <Container className={classes.container}>
                 <div className={classes.left}>
                     <Link href="/">
-                        <img className={classes.logo} src="/logo.svg" alt="Logo"/>
+                        <img className={classes.logo} src="/img/logo.svg" alt="Logo"/>
                     </Link>
                 </div>
                 <div className={classes.right}>
@@ -31,7 +31,7 @@ const Header = () => {
                                 <Link href="/grunnleggende" className={router.pathname == '/grunnleggende' ? classes.active : ''}>Grunnleggende</Link>
                             </li>
                             <li className={classes.item}>
-                                <a href="https://digdir.github.io/designsystem/">Komponenter</a>
+                                <Link href="/komponenter" className={router.pathname == '/komponenter' ? classes.active : ''}>Komponenter</Link>
                             </li>
                         </ul>
                 </div>

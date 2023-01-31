@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import { Copy } from 'lucide-react';
 import classes from './CodeSnippet.module.css';
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import prism from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
-import markup from 'react-syntax-highlighter/dist/cjs/languages/prism/markup';
-import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
-import scss from 'react-syntax-highlighter/dist/cjs/languages/prism/scss';
-import javascript from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { Tooltip } from 'react-tippy';
-SyntaxHighlighter.registerLanguage('markup', markup);
-SyntaxHighlighter.registerLanguage('css', css);
-SyntaxHighlighter.registerLanguage('scss', scss);
-SyntaxHighlighter.registerLanguage('javascript', javascript);
 // Formatting
 import prettier from 'prettier/standalone.js';
 import parserJs from 'prettier/parser-flow.js';
-import parserHtml from 'prettier/parser-html.js';
+import parserHtml from 'prettier/parser-markdown.js';
 import parserCss from 'prettier/parser-postcss.js';
+import {atomDark, darcula} from "react-syntax-highlighter/dist/cjs/styles/prism";
+import {oneDark, dracula, okaidia} from "react-syntax-highlighter/dist/cjs/styles/prism";
+import parserTs from 'prettier/parser-typescript'
+import {nightOwl} from "react-syntax-highlighter/dist/cjs/styles/prism";
+import {tomorrowNightBlue} from "react-syntax-highlighter/dist/cjs/styles/hljs";
+
 
 const CodeSnippet = ({ language = 'markup', children = '' }) => {
   const [showToolTip, setShowToolTip] = useState(false);
@@ -34,16 +31,28 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
     children = prettier.format(children, {
       parser: 'flow',
       plugins: [parserJs],
+        tabWidth: 2,
+        bracketSpacing: true,
+        bracketSameLine: true,
+        htmlWhitespaceSensitivity: 'ignore',
+        endOfLine: 'auto',
+        singleAttributePerLine: false
     });
   }
   if (language === 'markup') {
     // eslint-disable-next-line import/no-named-as-default-member
     children = prettier.format(children, {
-      parser: 'html',
+      parser: 'markdown',
       plugins: [parserHtml],
     });
   }
-
+    if (language === 'ts') {
+        // eslint-disable-next-line import/no-named-as-default-member
+        children = prettier.format(children, {
+            parser: 'typescript',
+            plugins: [parserTs],
+        });
+    }
   const onButtonClick = () => {
     setToolTipText('Kopiert!');
     navigator.clipboard.writeText(children);
@@ -55,7 +64,6 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
     }, 500);
   };
 
-  // @ts-ignore
   return (
     <div className={classes['code-snippet']}>
       <button
@@ -76,11 +84,12 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
 
       </button>
       <SyntaxHighlighter
-        language={language}
-        style={prism}
+          style={nightOwl}
+        language='jsx'
         customStyle={{
-          fontSize: '14px',
+          fontSize: '15px',
           margin: 0,
+          padding: '18px'
         }}
       >
         {children}

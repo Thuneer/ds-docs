@@ -1,0 +1,31 @@
+.content {
+    margin-top: 40px;
+    margin-bottom: 48px;
+}
+
+.menus {
+    margin-bottom: 32px;
+}
+
+.title {
+    font-size: 36px;
+    line-height: 1.3em;
+    margin-bottom: 16px;
+    font-weight: 500;
+}
+
+.desc {
+    padding-right: 200px;
+    font-size: 20px;
+    line-height: 1.7em;
+}
+
+.markdown h2 {
+    font-size: 28px !important;
+    font-weight: 500;
+}
+
+.markdown h3 {
+    font-size: 24px !important;
+    font-weight: 500;
+}

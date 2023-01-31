@@ -2,6 +2,10 @@
     --bs-body-color: #1E2B3C;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 footer {
     padding: 64px 0;
     background-color: #1E2B3C;
@@ -22,4 +26,8 @@ main {
     min-height: calc(100vh);
     overflow: hidden;
     position: relative;
+}
+
+body {
+    /*font-family: "Inter", sans-serif;*/
 }
