@@ -52,7 +52,7 @@
 .link:hover {
     color: inherit;
     text-decoration: underline;
-    text-underline-offset: 4px;
+    text-underline-offset: 5px;
 }
 
 .link img {
@@ -61,4 +61,8 @@
 }
 
 .link.storybook img {
+}
+
+.tomato {
+    padding: 0 56px 0 24px;
 }

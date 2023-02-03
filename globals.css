@@ -1,9 +1,16 @@
 :root {
     --bs-body-color: #1E2B3C;
+    --color-beta: #eceaff;
+    --color-beta-strong: #d6d4ff;
+    --color-decprecated: #ffd4d4;
 }
 
 * {
     box-sizing: border-box;
+}
+
+h1 {
+    margin-top: 0;
 }
 
 footer {

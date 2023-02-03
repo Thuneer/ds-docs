@@ -8,6 +8,7 @@ import { TableOfContents } from '../../components/TableOfContents/TableOfContent
 import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 
 import classes from './ComponentLayout.module.css';
+import {BetaBlock} from "../../components/BetaBlock/BetaBlock";
 
 interface ComponentLayoutProps {
   Content: React.ReactNode;
@@ -35,10 +36,11 @@ const ComponentLayout = ({ Content, data }: ComponentLayoutProps) => {
                 <SidebarMenu title='Komponenter' />
               </div>
             </Col>
-            <Col md={8}>
+            <Col md={8} className={classes.tomato}>
               <div className={classes.markdown}>
                 <h1 className={classes.title}>{data.title}</h1>
                 <p className={classes.desc}>{data.description}</p>
+                <BetaBlock />
                 <div className={classes.links}>
                   <a
                     className={classes.link}
