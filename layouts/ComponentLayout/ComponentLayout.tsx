@@ -1,9 +1,6 @@
 import Header from '../../components/Header/Header';
 import React from 'react';
-import Section from '../../components/Section/Section';
 import { Col, Container, Row } from 'react-bootstrap';
-import NavigationCard from '../../components/NavigationCard/NavigationCard';
-import Banner from '../../components/Banner/Banner';
 import { TableOfContents } from '../../components/TableOfContents/TableOfContents';
 import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
 

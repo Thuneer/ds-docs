@@ -32,11 +32,7 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
       parser: 'flow',
       plugins: [parserJs],
         tabWidth: 2,
-        bracketSpacing: true,
-        bracketSameLine: true,
-        htmlWhitespaceSensitivity: 'ignore',
-        endOfLine: 'auto',
-        singleAttributePerLine: false
+        semi: true
     });
   }
   if (language === 'markup') {

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Button,
-  ButtonSize,
   RadioGroup,
   RadioGroupSize,
 } from '@digdir/design-system-react';
@@ -9,13 +7,13 @@ import reactElementToJSXString from 'react-element-to-jsx-string';
 
 import { CodeSnippet } from '../CodeSnippet/CodeSnippet';
 
-import classes from './ComponentConfigurator.module.css';
+import classes from './Controls.module.css';
 
-interface ComponentConfiguratorProps {
-  component: never;
+interface ControlsProps {
+  component: any;
 }
 
-const ComponentConfigurator = ({ component }: ComponentConfiguratorProps) => {
+const Controls = ({ component }: ControlsProps) => {
   const [controls, setControls] = useState({});
   const config = [
     {
@@ -65,8 +63,9 @@ const ComponentConfigurator = ({ component }: ComponentConfiguratorProps) => {
   ];
 
   useEffect(() => {
+    setControls({'children': 'Button'})
     for (let i = 0; i < config.length; i++) {
-      setControls({ [config[i].prop]: config[i].defaultValue });
+      setControls(state => ({...state, [config[i].prop]: config[i].defaultValue }));
     }
   }, []);
 
@@ -78,7 +77,7 @@ const ComponentConfigurator = ({ component }: ComponentConfiguratorProps) => {
     <div className={classes.component}>
       <div className={classes.container}>
         <div className={classes.preview}>
-          {React.cloneElement(component, controls)}
+          {React.cloneElement(React.createElement(component), controls)}
         </div>
         <div className={classes.controls}>
           {config.map((item, index) => (
@@ -101,13 +100,13 @@ const ComponentConfigurator = ({ component }: ComponentConfiguratorProps) => {
         </div>
       </div>
 
-      <div>
+      <div className={classes.code}>
         {/* eslint-disable-next-line react/no-children-prop */}
         <CodeSnippet
           language='javascript'
         >
           {reactElementToJSXString(
-              React.cloneElement(component, controls),
+              React.cloneElement(React.createElement(component), controls),
           )}
         </CodeSnippet>
       </div>
@@ -115,4 +114,4 @@ const ComponentConfigurator = ({ component }: ComponentConfiguratorProps) => {
   );
 };
 
-export { ComponentConfigurator };
+export { Controls };

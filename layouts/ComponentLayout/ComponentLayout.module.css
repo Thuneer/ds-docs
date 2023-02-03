@@ -21,11 +21,17 @@
     line-height: 1.7em;
 }
 
+.markdown p {
+    padding-right: 200px;
+}
+
 .markdown h2 {
     font-size: 28px !important;
     font-weight: 500;
     margin-top: 48px;
     margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #d8d8d8;
 }
 
 .markdown h3 {
