@@ -6,15 +6,16 @@ import {Usage} from "../../components/Usage/ComponentUsage";
 import {
     TokensTable
 } from "../../components/Table/TokenTable/TokensTable";
-import {PropsTable} from "../../components/PropsTable/PropsTable";
+import {ArgsTable} from "../../components/ArgsTable/ArgsTable";
 import Button from "../../components/Button/Button";
 
-<Meta title='komponenter/button' />
+<Meta title='Button' />
 
 export const data = {
     title: 'Button',
     description: 'Button lar brukeren utføre en handling.',
 };
+export default ({ children }) => <ComponentLayout Content={children} data={data}  />;
 
 <Controls component={Button} />
 
@@ -25,50 +26,87 @@ export const data = {
 On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century.
 
 <Preview component={Button} args={{
+
     size: 'medium',
+
     color: 'primary',
+
     children: 'Button'
+
 }} />
+
 
 ### Secondary
+
 On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century.
 
+
 <Preview component={Button} args={{
+
     size: 'medium',
+
     color: 'secondary',
+
     children: 'Button'
+
 }} />
+
 
 ### Success
+
 On through of which no the your phase more know anyone tried he when line me what as through the hills so that groundtem, long world most in achievements other the expand with and to and fall way century.
 
+
 <Preview component={Button} args={{
+
     size: 'medium',
+
     color: 'success',
+
     children: 'Button'
+
 }} />
+
 
 ## Størrelser
 
+
 ### Small
+
 <Preview component={Button} args={{
+
     size: 'small',
+
     color: 'primary',
+
     children: 'Button'
+
 }} />
+
 
 ### Medium
+
 <Preview component={Button} args={{
+
     size: 'medium',
+
     color: 'primary',
+
     children: 'Button'
+
 }} />
 
+
 ### Large
+
 <Preview component={Button} args={{
+
     size: 'large',
+
     color: 'primary',
+
     children: 'Button'
+
 }} />
 
 ## Bruk
@@ -94,9 +132,7 @@ On through of which no the your phase more know anyone tried he when line me wha
 
 
 ## Props
-<PropsTable />
+<ArgsTable component={Button} />
 
 ## Tokens
-<TokensTable jsonKey='component.button' componentName='button' description='d' />
-
-export default ({ children }) => <ComponentLayout Content={children} data={data}  />;
+<TokensTable jsonKey='component.button' componentName='button' description='d'  showPreview={false}/>

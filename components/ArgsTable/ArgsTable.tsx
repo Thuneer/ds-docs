@@ -1,9 +1,13 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-import classes from './PropsTable.module.css'
+import classes from './ArgsTable.module.css'
 import cn from 'classnames'
 
-const PropsTable = () => {
+interface ArgsTable {
+    component: any;
+}
+
+const ArgsTable = ({component}: ArgsTable) => {
 
     const items = [
         {
@@ -28,6 +32,10 @@ const PropsTable = () => {
         }
     ]
 
+    useEffect(() => {
+        console.log(component)
+    }, []);
+
     const getType = (type: string) => {
         if (type === 'custom') {
             return 'HeadingProps';
@@ -38,6 +46,10 @@ const PropsTable = () => {
 
     return (
         <div className={classes.table}>
+
+
+
+
             {items.map((item, index) => (
                 <div key={index} className={classes.items}>
                     <div className={classes.item}>
@@ -50,4 +62,4 @@ const PropsTable = () => {
     )
 }
 
-export {PropsTable}
+export {ArgsTable}

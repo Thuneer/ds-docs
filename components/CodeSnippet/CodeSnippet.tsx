@@ -2,20 +2,16 @@ import React, { useState } from 'react';
 import { Copy } from 'lucide-react';
 import classes from './CodeSnippet.module.css';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { Tooltip } from 'react-tooltip'
-// Formatting
 import prettier from 'prettier/standalone.js';
 import parserJs from 'prettier/parser-flow.js';
 import parserHtml from 'prettier/parser-markdown.js';
 import parserCss from 'prettier/parser-postcss.js';
-import {atomDark, darcula} from "react-syntax-highlighter/dist/cjs/styles/prism";
-import {oneDark, dracula, okaidia} from "react-syntax-highlighter/dist/cjs/styles/prism";
 import parserTs from 'prettier/parser-typescript'
 import {nightOwl} from "react-syntax-highlighter/dist/cjs/styles/prism";
-import {tomorrowNightBlue} from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import Tippy from '@tippyjs/react';
 
 
-const CodeSnippet = ({ language = 'markup', children = '' }) => {
+const CodeSnippet = ({ language = 'markup', children = ''}) => {
   const [showToolTip, setShowToolTip] = useState(false);
   const [toolTipText, setToolTipText] = useState('Kopier');
 
@@ -54,17 +50,18 @@ const CodeSnippet = ({ language = 'markup', children = '' }) => {
     navigator.clipboard.writeText(children);
   };
 
+
   return (
     <div className={classes['code-snippet']}>
-        <Tooltip anchorId="tomato" content={toolTipText} place="top" />
-      <button
-          id='tomato'
-        onClick={() => onButtonClick()}
-        onMouseEnter={() => setToolTipText('Kopier')}
-        className={classes['code-snippet__icon']}
-      >
-          <Copy size={20} />
-      </button>
+        <Tippy content={toolTipText} hideOnClick={false}>
+            <button
+                onMouseEnter={() => setToolTipText('Kopier')}
+                onClick={() => onButtonClick()}
+                className={classes['code-snippet__icon']}
+            >
+                <Copy size={20} />
+            </button>
+        </Tippy>
       <SyntaxHighlighter
           style={nightOwl}
         language='jsx'

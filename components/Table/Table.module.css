@@ -2,16 +2,16 @@
     border-collapse: collapse;
     border-radius: 4px;
     margin-top: 24px;
-    margin-left: -15px;
-    width: calc(100% + 15px);
+    /*margin-left: -15px;*/
+    width: calc(100%);
 }
 
 .ddsdocs-table__row {
-    border-bottom: 1px solid #D2D5D8;
+    border: 1px solid #e6e7ea;
 }
 
 .ddsdocs-table__header {
-
+    background-color: #F4F5F6;
 }
 
 .ddsdocs-table__header-cell {
